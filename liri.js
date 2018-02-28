@@ -37,11 +37,13 @@ var spotifySong = "spotify-this-song";
 var movieThis = "movie-this";
 var doIt = "do-what-it-says";
 
-// default song if no arg is passed in the command line
-var defaultSong = "the-sign";
-// default movie is no arg is passed in the command line
-var defaultMovie = "mr.+nobody";
+// default song if no song name is passed in the command line
+// its supposed to give you ace of base 'the sign', but its some rap song. Ive replaced it with other song names for testing and it returns whatever song name you store in it. 'the sign' just gives you another song than the instructions intended
+var defaultSong = "the+sign";
+// default movie is no movie name is passed in the command line
+var defaultMovie = "mr+nobody";
 
+// function the run the twitter request when requirements are met in the runRequest function if statements
 function twitterRequest() {
     // using the twitter package to search for the twitter account and access that tweets from the account
     client.get('search/tweets', {q: 'UNCCBCfuzzy'}, function(error, tweets, response) {
@@ -54,6 +56,7 @@ function twitterRequest() {
     });
 };
 
+// function the run the spotify request when requirements are met in the runRequest function if statements
 function spotifyRequest() {
     spotify.search({ type: 'track', query: songOrMovieName, limit: 1 }, function(err, data) {
         if (err) {
@@ -69,6 +72,7 @@ function spotifyRequest() {
     });
 };
 
+// function the run the omdb request when requirements are met in the runRequest function if statements
 function omdbRequest() {
     // Then run a request to the OMDB API with the movie specified
     request("http://www.omdbapi.com/?t="+songOrMovieName+"&y=&plot=short&apikey=trilogy", function(error, response, body) {
@@ -86,6 +90,7 @@ function omdbRequest() {
     });
 };
 
+// function the run the fs request when requirements are met in the runRequest function if statements
 function fsRequest() {
     // if command is do-what-it-says then read the txt file and display results for song in file
     fs.readFile("random.txt", "utf8", function(error, data) {
@@ -102,27 +107,29 @@ function fsRequest() {
     });
 }
 
+// function to run appropriate above functions according to the conditions met in the if statements
 function runRequests() {
     // if the command for 3rd arg is 'my-tweets' console loge the tweets, else do nothing
     if (command === myTweets) {
         twitterRequest();
+    // if the command in arg[2] is movie-this and arg[3] is null the default song will be the sign. if statement must be before regular spotify if statement for synchronicity purposes
+    } else if (command === spotifySong && process.argv[3] == null) {
+        songOrMovieName = defaultSong;
+        spotifyRequest();
     } else if (command === spotifySong && songOrMovieName !== undefined) { 
         spotifyRequest();
-    } 
-    // else if (command === spotifySong && songOrMovieName == null) {
-    //     console.log("no song for you");
-    // } 
-    else if (command === movieThis && songOrMovieName !== undefined) {
+    // if the command in arg[2] is movie-this and arg[3] is null the default movie name will be Mr. Nobody. if statement must be before regular omdb if statement for synchronicity purposes
+    } else if (command === movieThis && process.argv[3] == null) {
+        songOrMovieName = defaultMovie;
         omdbRequest();
-    }
-    // else if (command === movieThis && songOrMovieName == null) {
-    //     console.log("no movie for you");
-    //     // (songOrMovieName = defaultMovie);
-    //     // console.log(songOrMovieName);
-    // } 
-    else if (command === doIt) {
+    } else if (command === movieThis && songOrMovieName !== undefined) {
+        omdbRequest();
+    } else if (command === doIt) {
         fsRequest();
+    } else {
+        return;
     }
 };
 
+// run the function for the requests based on the if statements
 runRequests();
