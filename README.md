@@ -38,5 +38,5 @@
     * Will pull in a song name form the random.txt file and return data for the song 'I want it that way'.
 
 ### DEMO
-    [GIF DEMO](http://g.recordit.co/mZ6J1T9u1K.gif)
+    ![GIF DEMO](http://g.recordit.co/mZ6J1T9u1K.gif)
 
