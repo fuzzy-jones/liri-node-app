@@ -39,4 +39,5 @@
 
 ### DEMO
     ![GIF DEMO](/images/liri-node-app-demo.gif)
+    http://g.recordit.co/mZ6J1T9u1K.gif
 
