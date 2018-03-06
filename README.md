@@ -38,5 +38,5 @@
     * Will pull in a song name form the random.txt file and return data for the song 'I want it that way'.
 
 ### DEMO
-    ![GIF DEMO](/images/liri-node-app-demo.gif)
+    ![GIF DEMO](https://github.com/fuzzy-jones/liri-node-app/images/liri-node-app-demo.gif)
 
