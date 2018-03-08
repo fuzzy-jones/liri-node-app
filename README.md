@@ -38,5 +38,5 @@
     * Will pull in a song name form the random.txt file and return data for the song 'I want it that way'.
 
 ### DEMO
-![GIF DEMO](images/liridemo.gif "liri!")
+![GIF DEMO](/images/liridemo.gif)
 

@@ -38,20 +38,17 @@ var movieThis = "movie-this";
 var doIt = "do-what-it-says";
 
 // default song if no song name is passed in the command line
-// its supposed to give you ace of base 'the sign', but its some rap song. Ive replaced it with other song names for testing and it returns whatever song name you store in it. 'the sign' just gives you another song than the instructions intended
-var defaultSong = "the+sign";
+var defaultSong = "the+sign+ace+of+base";
 // default movie is no movie name is passed in the command line
 var defaultMovie = "mr+nobody";
 
 // function the run the twitter request when requirements are met in the runRequest function if statements
 function twitterRequest() {
     // using the twitter package to search for the twitter account and access that tweets from the account
-    client.get('search/tweets', {q: 'UNCCBCfuzzy'}, function(error, tweets, response) {
-        // store the data statuses in a new var
-        var theTweets = tweets.statuses;       
+    client.get('statuses/user_timeline', {screen_name: 'UNCCBCfuzzy'}, function(error, tweets, response) {
         // the assignment says to display for 20 recent tweets, but I only have 5 tweets and length of 20 was causing error, so I did it for length
-        for (var i = 0; i < theTweets.length; i++) {
-        console.log("-"+theTweets[i].text);
+        for (var i = 0; i < tweets.length; i++) {
+        console.log("--"+tweets[i].text);
         }   
     });
 };
