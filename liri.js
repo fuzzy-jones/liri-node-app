@@ -48,7 +48,9 @@ function twitterRequest() {
     client.get('statuses/user_timeline', {screen_name: 'UNCCBCfuzzy'}, function(error, tweets, response) {
         // the assignment says to display for 20 recent tweets, but I only have 5 tweets and length of 20 was causing error, so I did it for length
         for (var i = 0; i < tweets.length; i++) {
-        console.log("--"+tweets[i].text);
+        console.log("Tweet: "+tweets[i].text);
+        console.log("Created: "+tweets[i].user.created_at);
+        console.log("------------------------------------------------");
         }   
     });
 };
