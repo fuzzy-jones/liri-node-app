@@ -2,7 +2,7 @@
 
 * In this assignment I created a LIRI (Language Interpretation and Recognition Interface) node app, which takes in command line parameters and returns data. This app uses npm packages to make requests to Twitter, Spotify, and OMBD.
 
-### Instrcutions
+### Instructions
 
 * There are 4 different command line args that can be passed as the 3rd arg, and will return data based on the request made. The 4 possible args are as follows.   
     * `my-tweets`
