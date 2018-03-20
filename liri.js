@@ -133,16 +133,4 @@ function runRequests() {
 // run the function for the requests based on the if statements
 runRequests();
 
-// function addToLog() {
-//     fs.appendFile("log.txt", pick + ": " + title + "\n", function(err) {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             console.log("content added to log.txt");
-//         }
-//     });
 
-// }
-// return {
-//     init: init
-// }
